@@ -8,7 +8,7 @@ for i in range(N):
 for j in a:
     result.add(j)
 
-for k in result:
+
     
 
 
