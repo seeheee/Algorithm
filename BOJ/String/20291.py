@@ -11,10 +11,10 @@ for j in list1:
     list2.append(tmp[1])
 
 list2.sort()
-print(list2)
+count= {}
+for k in list2:
+    try:count[k] += 1
+    except: count[k] = 1
 
-count = 0
-for k in range(len(list2)-1):
-    if list2[k] == list2[k+1]:
-        count += 1
-    print(count)
+for key, item in count.items():
+    print(key, item)
