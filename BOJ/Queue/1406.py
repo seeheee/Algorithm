@@ -9,14 +9,12 @@ class Stack:
     def __init__(self):
         self.pos = -1
     def P(self, x):
-        tmp = str[self.pos]
-        str[self.pos] = x
-        str[self.pos+1] = tmp
+        str.append(x)
     def L(self):
         if len(str) - (2*len(str)) == -(len(str)):
             return self.pos
         else:
-            return self.pos-1
+            return self.pos - 1
     def D(self):
         return self.pos+1
     def B(self):
