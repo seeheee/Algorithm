@@ -20,7 +20,7 @@ class Stack:
     def B(self):
         del str[-1]
         ++self.pos
-
+# 이거 아무리봐도 너무 어려워
 stack = Stack()
 for i in range(N):
     order = input().split(' ')
