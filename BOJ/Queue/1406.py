@@ -1,36 +1,40 @@
-str = list(input())
+from collections import deque
+import sys
+input = sys.stdin.readline
+
+init = list(input().strip())
+left = deque(init)
+right = deque()
 N = int(input())
 
-print(str[-1])
-print(str[-2])
-
-
 class Stack:
-    def __init__(self):
-        self.pos = -1
     def P(self, x):
-        str.append(x)
+        left.append(x)
     def L(self):
-        if len(str) - (2*len(str)) == -(len(str)):
-            return self.pos
-        else:
-            return self.pos - 1
+        if len(left) != 0:
+            right.appendleft(left.pop())
     def D(self):
-        return self.pos+1
+        if len(right) != 0:
+            left.append(right.popleft())
     def B(self):
-        del str[-1]
-        ++self.pos
-# 이거 아무리봐도 너무 어려워
+        if len(left) != 0:
+            left.pop()
+
+
 stack = Stack()
 for i in range(N):
-    order = input().split(' ')
+    order = input().strip().split(' ')
     if order[0] == 'P':
         stack.P(order[1])
     elif order[0] == 'L':
-        print(stack.L())
+        stack.L()
     elif order[0] == 'D':
-        print(stack.D())
+        stack.D()
     elif order[0] == 'B':
-        print(stack.B())
+        stack.B()
 
-print(str)
+
+result = left + right
+
+for j in result:
+    print(j, end='')
