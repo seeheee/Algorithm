@@ -30,3 +30,5 @@ split() : 문자열을 구분자 기준에 따라 나누기
 ```python
 
 ```
+
+Counter
