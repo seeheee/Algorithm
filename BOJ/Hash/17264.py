@@ -1,5 +1,3 @@
-# 이거 대체 왜 안되냐 ?
-
 import sys
 input = sys.stdin.readline
 
@@ -21,21 +19,24 @@ for _ in range(N):
     player_list.append(player)
 
 result = 0
-list1 = []
+
 for i in player_list:
+    # score 점수 이상이 되면은 탈출하는 것이므로 리스트 안에 포함되어있는지로 보면 안된다.
+    if result >= score:
+        print("I AM NOT IRONMAN!!")
+        sys.exit()
     if i in dic.keys():
         result += dic[i]
         if result <= 0:
             result = 0
     else:
-        if result - L <= 0:
+        result = result - L
+        if result <= 0:
             result = 0
-        else:
-            result = result - L
-    list1.append(result)
 
-print(list1)
-if score in list1:
-    print("I AM NOT IRONMAN!!")
-else:
-    print("I AM IRONMAN!!")
+
+# # print(list1)
+# if score in list1:
+#     print("I AM NOT IRONMAN!!")
+# else:
+print("I AM IRONMAN!!")
