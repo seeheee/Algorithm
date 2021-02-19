@@ -7,34 +7,33 @@ input = sys.stdin.readline
 N = int(input().rstrip())
 M = int(input().rstrip())
 
-invite = [list(map(int, input().rstrip().split())) for _ in range(1, M+1)]
+friends = [[] for _ in range(N)]
 
-check = [False] * M
-
-#
-# print("invite 배열", invite[0])
-# print("check 배열", check)
-
-def bfs(invite, start, check):
+def bfs(x):
     que = deque()
-    que.append(start)
-    check[start] = True
-
+    visited = [0] * N # 방문 확인하기 위한 리스트 0으로 초기화
+    visited[x] = 1
+    que.append(x)
     while que:
-        v = que.popleft()
-        for i in invite[v]:
-            if check[i-1] == False:
-                que.append(i-1)
-                check[i-1] = True
-
+        p = que.popleft()
+        for i in friends[p]:
+            if not visited[i]:
+                visited[i] = visited[p] + 1
+                print(i, visited[i])
+                que.append(i)
+                print("que", que)
     else:
-        return
+        return visited
 
-bfs(invite, 0, check)
 
-cnt = 0
-for j in check[1:]:
-    if j == True:
-        cnt += 1
+for _ in range(M):
+    a, b = map(int, input().split())
+    friends[a-1].append(b-1)
+    friends[b-1].append(a-1)
 
-print(N - cnt)
+count = 0
+param = bfs(0)
+for answer in param:
+    if 1 < answer <=3:
+        count += 1
+print(count)
