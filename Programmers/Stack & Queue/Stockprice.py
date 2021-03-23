@@ -1,5 +1,5 @@
 # 주식가격
-from collections import deque
+# 알고리즘 설명
 def solution(prices):
     answer = [len(prices)-i-1 for i in range(len(prices))]
     stack = [0]
