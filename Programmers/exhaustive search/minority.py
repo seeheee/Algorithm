@@ -20,3 +20,32 @@ pool = ['1', '5', '7']
 
 print(list(map(''.join, permutations(pool, 2))))
 
+#########################################################
+
+from itertools import permutations
+import math
+
+
+def decimal(n):
+    k = math.sqrt(n)
+    if n < 2:
+        return False
+    for i in range(2, int(k) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+
+def solution(numbers):
+    answer = []
+    for i in range(1, len(numbers) + 1):
+        result = set(map(int, map(''.join, permutations(numbers, i))))
+        for j in result:
+            if decimal(j):
+                answer.append(j)
+    return len(set(answer))
+
+
+
+
+
