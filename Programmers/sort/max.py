@@ -1,4 +1,4 @@
-#### 시간초과 #####
+#### 시간초과 발생 이것을 어떻게 행어ㅏㅣㅣ#####
 from itertools import permutations
 def solution(numbers):
     answer = []
