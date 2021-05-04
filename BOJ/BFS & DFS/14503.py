@@ -5,7 +5,7 @@ input = sys.stdin.readline
 # N = 세로(열), M = 가로(행)
 N, M = map(int, input().split())
 r, c, d = map(int, input().split())
-state = [list(map(int, input().split())) for _ in range(M)]
+state = [list(map(int, input().split())) for _ in range(N)]
 
 que = deque()
 
@@ -45,13 +45,17 @@ def bfs(x, y, dir):
     count = 1
     que.append([x, y, dir])
     state[x][y] = 2
+
+    # 더이상 사방에 청소할 곳이 없고 뒷칸도 벽인 상황일때까지 돈다
     while que:
         x, y, dir = que.popleft()
         temp = dir
+
+        # 하나의 칸 당 동서남북 4방향 확인
         for i in range(4):
             temp = change(temp)
             nx, ny = x + dx[temp], y + dy[temp]
-            if 0 <= nx < M and 0 <= ny < N and state[nx][ny] == 0:
+            if 0 <= nx < N and 0 <= ny < M and state[nx][ny] == 0:
                 state[nx][ny] = 2
                 que.append([nx, ny, temp])
                 count += 1
@@ -64,6 +68,7 @@ def bfs(x, y, dir):
 
                 # 뒷 칸도 벽인 경우
                 if state[nx][ny] == 1:
+                    # d인 경우에 작동을 멈춤
                     return count
 
 
