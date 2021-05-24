@@ -1,4 +1,3 @@
-import heapq
 import collections
 # 사전식순서를 유지하는 것을 찾아내는 것이 중요
 # set함수를 sorted를 이용할 수 있다. -> 반환값이 리스트
@@ -13,17 +12,18 @@ class Solution:
         # 맨 마지막 함수 재귀값에서 돌아오는 것이 필요해서 필요함
         return ''
 
-# 스택을 이용한 방법
+# 스택을 이용한 방법(문자열 순서를 유지하기 위해서)
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
         stack = []
         counter = collections.Counter(s)
         for char in s:
+            # 또 나올 문자인지 아닌지를 알기위해 나왔으면 count -1
             counter[char] -= 1
             # 중복되는 문자 제거(해당문자열 넘어감)
             if char in stack:
                 continue
-            # stack에 사전순으로 쌓이면서 또 나올 문자인지 확인
+            # stack에 사전순으로 쌓이면서 또 나올 문자인지 확인해서 뒤에 그 숫자가 더 나올 가능성이 있으면 pop 가능
             while stack and char < stack[-1] and counter[stack[-1]] > 0:
                 stack.pop()
             # 해당문자 넣기
