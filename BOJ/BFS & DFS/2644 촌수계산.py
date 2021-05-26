@@ -5,8 +5,7 @@ m = int(input()) # 관계의 개수
 people_list = [[] for _ in range(n+1)]
 people_visited = [False for _ in range(n+1)]
 
-# print(people_list)
-# print(people_visited)
+
 
 def bfs(start, finish):
     count = 0
@@ -30,6 +29,8 @@ for _ in range(m):
     people_list[x].append(y)
     people_list[y].append(x)
 
-print(bfs(P1, P2))
+print("people_list", people_list)
+print("people_visited", people_visited)
+print(bfs(1, 4))
 
 
