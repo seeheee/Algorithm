@@ -1,3 +1,13 @@
+### 반례 ###
+# 3 3 2
+# 1 1 0
+# 1 1 0
+# 0 0 0
+# 0 0 0
+# 0 1 1
+# 0 1 1
+# 1
+
 from collections import deque
 import sys
 input = sys.stdin.readline
@@ -14,9 +24,7 @@ dy = [0, 1, 0, -1, 0, 0]
 dz = [0, 0, 0, 0, -1, 1]
 
 
-def bfs(z, x, y):
-    que = deque()
-    que.append([z, x, y])
+def bfs():
     while que:
         z, x, y = que.popleft()
         visited[z][x][y] = 1
@@ -32,15 +40,18 @@ def bfs(z, x, y):
                     visited[nz][nx][ny] = 1
                     que.append([nz, nx, ny])
 
+# 점 하나씩 큐에 넣고 돌리는 게 아니라 일단 토마토가 익은 아이들을 모두 담아서 que에 한번에 보내야 한다.
+# 그래야 que의 순서가 기존의 것 모두 담기고 탐색하는 것이 que 뒤에 담기기 때문이다.
 
-
+que = deque()
 for j in range(H):
     for k in range(N):
         for l in range(M):
-            if tomato_list[j][k][l] == 1 and visited[j][k][l] == 0:
+            if tomato_list[j][k][l] == 1:
                 visited[j][k][l] = 1
-                bfs(j, k, l)
+                que.append([j, k, l])
 
+bfs()
 
 ############### 이 부분 생각 못함 ##################
 # bfs 함수를 모두 돌고 난 후 예외처리와 결과 출력
