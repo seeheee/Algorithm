@@ -85,4 +85,15 @@ b.count(2)
 # 3
 ```
 
-### 💡 우선순위 
+### 💡 2차원 리스트에서 최대값과 최소값 구하기
+참고: https://devbull.xyz/python-2caweon-baeyeolyi-coedaegabs-coesogabs-cajgi/
+
+#### 최대값 구하기
+```python
+max(map(max, list)
+```
+
+#### 최소값 구하기
+```python
+min(map(min, list)
+```
