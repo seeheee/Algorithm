@@ -1,35 +1,34 @@
+# 조건문을 나누는 것이 어려웠음
 import heapq
-operations = ["I 16","D 1"]
-
+operations = ["I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"]
 
 def solution(operations):
-    heap = []
+    heap = [] # 최소값을 담을 힙
+    Max_heap = [] # 최대값을 담을 힙
 
     for operation in operations:
         if operation.startswith('I'):
             result = operation.split()
-            heap.append(result[1])
+            heapq.heappush(heap, int(result[1])) #넣어줄때 애초에 int로 넣으면 됨
+            heapq.heappush(Max_heap, (int(result[1]) * -1, int(result[1]))) # 이렇게 넣어주면 for문 필요없음(int(result[1]) * -1)
+        else:
+            # 문제 요구
+            if len(heap) == 0:
+                pass
 
-    new_heap = list(map(int, heap))
-    print(new_heap)
+            elif operation.startswith('D 1'):
+                max_value = heapq.heappop(Max_heap)[1]
+                heap.remove(max_value)
 
-    while new_heap:
-        for operation in operations:
-            if operation.startswith('D 1'):
-                for i in new_heap:
-                    heapq.heappush(new_heap, (-i, i))
-                heapq.heappop(new_heap)
+            elif operation.startswith('D -1'):
+                heapq.heappop(heap)
 
-            if operation.startswith('D -1'):
-                heapq.heapify(new_heap)
-                heapq.heappop(new_heap)
-
-    # 큐가 비어있으면 [0,0] 리턴
-    while not new_heap:
+    # 모든 연산을 처리한 후에 최대값과 최소값 출력
+    if heap:
+        answer = [heapq.heappop(Max_heap)[1], heapq.heappop(heap)]
+        return answer
+    else:
         return [0,0]
-
-    answer = sorted(new_heap, reverse=True)
-    return answer
 
 
 print(solution(operations))
