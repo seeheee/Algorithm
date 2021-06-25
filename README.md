@@ -144,3 +144,5 @@ max(map(max, list)
 ```python
 min(map(min, list)
 ```
+
+### 💡 map과 lambda
