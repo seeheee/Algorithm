@@ -146,5 +146,24 @@ min(map(min, list)
 ```
 
 ### 💡 map과 lambda, zip
-https://digital-play.tistory.com/56
+https://digital-play.tistory.com/56<br>
 https://www.daleseo.com/python-zip/
+
+### 💡 split()랑 split(" ")의 차이
+✌ 공백까지 리스트에 담기는 경우
+
+```python
+s = "try helllo world     try"
+s_split = s.split(' ')
+print(s_split)
+# ['try', 'helllo', 'world', '', '', '', '', 'try']
+```
+
+✌ 구분자를 생략하는 경우
+
+```python
+s = "try helllo world     try"
+s_split = s.split()
+print(s_split)
+# s_split = ['try', 'helllo', 'world', 'try']
+```
