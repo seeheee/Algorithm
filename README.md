@@ -145,4 +145,6 @@ max(map(max, list)
 min(map(min, list)
 ```
 
-### 💡 map과 lambda
+### 💡 map과 lambda, zip
+https://digital-play.tistory.com/56
+https://www.daleseo.com/python-zip/
