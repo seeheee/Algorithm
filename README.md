@@ -167,3 +167,48 @@ s_split = s.split()
 print(s_split)
 # s_split = ['try', 'helllo', 'world', 'try']
 ```
+
+### 💡 reverse와 reversed
+✌ reverse는 **list타입에서 제공하는 함수**로써 반환값이 없다.
+
+```python
+l = ['a', 'b', 'c']
+t = ('a', 'b', 'c')
+d = {'a': 1, 'b': 2, 'c': 3}
+s = 'abc'
+
+l.reverse()  # ['c', 'b', 'a']
+t.reverse()  # AttributeError: 'tuple' object has no attribute 'reverse'
+d.reverse()  # AttributeError: 'dict' object has no attribute 'reverse'
+s.reverse()  # AttributeError: 'str' object has no attribute 'reverse'
+```
+
+✌ reversed는 내장함수로, list에서 제공하는 함수가 아니고 **reversed는 ‘reversed’ 객체를 반환**한다.
+
+```python
+l = ['a', 'b', 'c']
+t = ('a', 'b', 'c')
+d = {'a': 1, 'b': 2, 'c': 3}
+s = 'abc'
+
+print(list(reversed(l)))  # ['c', 'b', 'a']
+print(list(reversed(t)))  # ['c', 'b', 'a']
+print(tuple(reversed(d)))  # ('c', 'b', 'a')
+print(list(reversed(s)))  # ['c', 'b', 'a']
+```
+
+👀 dictionary는 키를 반대로 
+
+```python
+l = ['a', 'b', 'c']
+t = ('a', 'b', 'c')
+d = {'a': 1, 'b': 2, 'c': 3}
+s = 'abc'
+
+reversed(l)  # <listreverseiterator object at 0x101053c10>
+reversed(t)  # <reversed at 0x1f23fec0790>
+reversed(d)  # <dict_reversekeyiterator at 0x1f23fec1b80>
+reversed(s)  # <reversed at 0x1f23fe6be20>
+```
+
+
