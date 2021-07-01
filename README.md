@@ -31,7 +31,8 @@ isalpha() : 문자열이 알파벳인지 확인, 알파벳이면 True 아니면 
 isdigit() : 문자열이 숫자인지 확인, 숫자이면 True 아니면 False<br>
 
 ### 💡 순열과 조합 그리고 중복 순열(combinations, permutations, product)
-참고: https://velog.io/@insutance/Python-%EC%88%9C%EC%97%B4%EA%B3%BC-%EC%A1%B0%ED%95%A9-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC
+참고: https://velog.io/@insutance/Python-%EC%88%9C%EC%97%B4%EA%B3%BC-%EC%A1%B0%ED%95%A9-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC<br>
+https://hckcksrl.medium.com/python-permutation-combination-a7bf9e5d6ab3
 
 조합을 사용하는 경우는 언제일까 ❓
 1. 1,2,3의 숫자가 적힌 카드가 있을 때, 이 중 두 장을 꺼내는 경우의 수 -> 12,13,21,23,31,32
