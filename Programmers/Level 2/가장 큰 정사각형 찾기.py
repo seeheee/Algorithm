@@ -1,5 +1,7 @@
+# DP -> 2차원 배열이 입력으로 주어짐, 결과(최댓값, 최솟값), 방향이 정해져있다..
 # answer에 담기는 거는 정사각형의 한 변의 길이 그러니깐 제곱
 
+# o(n**2)
 def solution(board):
     r = len(board)
     c = len(board[0])
