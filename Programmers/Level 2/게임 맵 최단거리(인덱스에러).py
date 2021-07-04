@@ -1,40 +1,44 @@
-# 최단 경로를 구하는 문제는 BFS 이용
 from collections import deque
 
+
 def solution(maps):
-    n = len(maps) # 행
-    m = len(maps[0])  # 이거 어떻게 할지 생각 못 함(열)
+    dx = [0, 0, -1, 1]
+    dy = [-1, 1, 0, 0]
 
-    # 동, 서, 남, 북
-    dx = [[1,0], [-1, 0], [0,1], [0,-1]]
+    r = len(maps)
+    c = len(maps[0])
+    # 올바른 방법
+    # [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+    visited = [[0] * c for _ in range(r)]
+    print(visited)
 
-    visited = [[0 * m] for _ in range(n)]
+    # 인덱스 에러가 난 이유
+    # [[0], [0], [0], [0], [0]]
+    wrong_visited = [[0 * r] for _ in range(r)]
+    print(wrong_visited)
 
+    visited[0][0] = 1
     que = deque()
     que.append([0, 0])
-    visited[0][0] = 1
     while que:
-        y, x = que.popleft()
-        for k in range(4):
-            ny = y + dx[k][0]
-            nx = x + dx[k][1]
-            if 0 <= ny < n and 0 <= nx < m:
-                if maps[ny][nx] == 1:
-                    if visited[ny][nx] == 0:
-                        visited[ny][nx] = visited[y][x] + 1
-                        que.append([ny, nx])
-    return visited[n-1][m-1]
+        x, y = que.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0 <= nx < r and 0 <= ny < c:
+                if maps[nx][ny] == 1:
+                    if visited[nx][ny] == 0:
+                        # print(nx, ny)
+                        visited[nx][ny] = visited[x][y] + 1
+                        que.append([nx, ny])
 
-    #
-    # for i in range(n):
-    #     for j in range(m):
-    #         if maps[i][j] == 1:
-    #             bfs(i, j)
+    if visited[r-1][c-1] == 0:
+        return -1
+    else:
+        return visited[r-1][c-1]
 
 
-print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]))
 
-# maps = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
-# for i in range(3):
-#     for j in range(4):
-#         print(i, j, maps[i][j])
+
+
+print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,0,1]]))
