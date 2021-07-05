@@ -18,8 +18,8 @@ find() : 문자열에 매개변수로 입력한 문자열을 앞에서부터 찾
 rfind() : 문자열 뒤에서부터 찾아 index 변환, 없으면 -1 반환<br>
 index(), rindex() : 각각 find, rfind와 동일, 없으면 에러 발생<br>
 
-lower() : 문자열 내 모든 문자 소문자로 변환<br>
-upper() : 문자열 내 모든 문자 대문자로 변환<br>
+문자열.lower() : 문자열 내 모든 문자 소문자로 변환<br>
+문자열.upper() : 문자열 내 모든 문자 대문자로 변환<br>
 
 lstrip() : 문자열의 왼쪽에 있는 공백을 제거<br>
 rstrip() : 문자열의 오른쪽에 있는 공백을 제거<br>
@@ -27,8 +27,10 @@ strip() : 문자열의 양쪽에 있는 공백을 제거<br>
 split() : 문자열을 구분자 기준에 따라 나누기<br>
 
 https://appia.tistory.com/178<br>
-isalpha() : 문자열이 알파벳인지 확인, 알파벳이면 True 아니면 False<br>
-isdigit() : 문자열이 숫자인지 확인, 숫자이면 True 아니면 False<br>
+https://it-neicebee.tistory.com/43<br>
+문자열.isalpha() : 문자열이 알파벳인지 확인, 알파벳이면 True 아니면 False<br>
+문자열.isdigit() : 문자열이 숫자인지 확인, 숫자이면 True 아니면 False<br>
+문자열.isalnum() : 문자열이 문자 혹은 숫자일 경우 True 아니면 False<br>
 
 ### 💡 순열과 조합 그리고 중복 순열(combinations, permutations, product)
 참고: https://velog.io/@insutance/Python-%EC%88%9C%EC%97%B4%EA%B3%BC-%EC%A1%B0%ED%95%A9-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC<br>
