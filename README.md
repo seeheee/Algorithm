@@ -214,4 +214,5 @@ reversed(d)  # <dict_reversekeyiterator at 0x1f23fec1b80>
 reversed(s)  # <reversed at 0x1f23fe6be20>
 ```
 
+💡 정규 표현식
 
