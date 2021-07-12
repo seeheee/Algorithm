@@ -1,3 +1,4 @@
+# 혼자 풀었어....
 def solution(N, stages):
     dic = {}
     for i in range(1, N+2):
