@@ -4,14 +4,9 @@ N = int(input())
 array = list(list(map(int, input().split())) for _ in range(N))
 
 # 가로, 세로, 대각선 이동 각각 초기화 -> 생각못한 부분: 각각 변수로 초기화하지 말고 하나의 배열안에 넣기
+# visited[0]은 가로, visited[1]은 세로, visited[2]는 대각선
 visited = [[[0 for i in range(N)] for i in range(N)] for i in range(3)]
 
-# visited[0]은 가로, visited[1]은 세로, visited[2]는 대각선
-
-# # 틀린방법
-# f_visited = [[0]*N for _ in range(N)]
-# s_visited = [[0]*N for _ in range(N)]
-# t_visited = [[0]*N for _ in range(N)]
 
 visited[0][0][1] = 1  # 막대기 끝 부분 1로 표현
 
@@ -36,7 +31,7 @@ for i in range(1, N):
         # if array[i][j] == 0:
             visited[0][i][j] = visited[0][i][j-1] + visited[2][i][j-1]
 
-# print(visited)
+print(visited)
 
 answer = [visited[a][N-1][N-1] for a in range(3)]
 print(sum(answer))
