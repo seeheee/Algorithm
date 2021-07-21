@@ -49,9 +49,36 @@
 #     print(result - 1)
 
 
-list1 = ['119', '97674223', '1195524421']
-print('12'.find('1235'))
+# list1 = ['119', '97674223', '1195524421']
+# print('12'.find('1235'))
 
 # for i in range(len(list1)):
 #     for j in range(i+1, len(list1)):
 #         list1[i].find()
+
+
+import sys, itertools, collections
+def bfs(same):
+    start = same[0]
+    q = collections.deque([start])
+    visited = set([start])
+    _sum = 0
+    while q:
+        v = q.popleft()
+        _sum += pp[v]
+        for u in g[v]:
+            if u not in visited and u in same:
+                q.append(u)
+                visited.add(u)
+                return _sum, len(visited)
+n = int(sys.stdin.readline().strip())
+pp = [int(x) for x in sys.stdin.readline().split()]
+g = collections.defaultdict(list)
+result = float('inf')
+for i in range(n):
+    _input = [int(x) for x in sys.stdin.readline().split()]
+    for j in range(1, _input[0]+1):
+        g[i].append(_input[j]-1)
+
+# [[], [2, 2], [2, 4, 4, 2, 1, 3], [], [1, 3, 6, 5], [], []]
+print(g) # defaultdict(<class 'list'>, {0: [1, 3], 1: [0, 2, 5, 4], 2: [3, 1], 3: [0, 2], 4: [1], 5: [1]})
