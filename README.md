@@ -41,6 +41,7 @@ https://hckcksrl.medium.com/python-permutation-combination-a7bf9e5d6ab3
 2. 'A', 'B', 'C'로 만들 수 있는 경우의 수 -> 'ABC', 'ACB', 'BAC', 'BCA', 'CAB', 'CBA'
 
 ### 순열(permutations)
+* 순열은 순서가 있는 조합
 * 중복을 허용하지 않는다. 즉 11,22,33 나올 수 없음
 * 순서에 의미가 있다. (= 같은 값이 뽑히더라도 순서가 다르면 다른 경우의 수로 판단)
 
