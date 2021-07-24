@@ -20,3 +20,4 @@ def solution(n, words):
 ha = "tank"
 
 print(ha[-1:])
+print(ha[:1])
