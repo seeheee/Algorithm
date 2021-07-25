@@ -1,6 +1,5 @@
-# 다익스트라 알고리즘 이용
 import sys
-import heapq
+from collections import deque
 
 input = sys.stdin.readline
 
@@ -8,22 +7,22 @@ V, E = map(int, input().split())
 start = int(input())
 adj = [[] for _ in range(V+1)]
 distance = {i:float('inf') for i in range(1, V+1)}
-
+visited = [False] * (V+1)
 
 def bfs(v, adj, distance):
-    que = []
-    heapq.heappush(que, (0, v))  # (거리,노드) 힙에 집어넣음
+    que = deque()
+    que.append(v) # (거리,노드) 힙에 집어넣음
     distance[v] = 0  # 처음 시작노드 초기화
+    visited[v] = True
     while que:
-        print(que)
-        dist, now = heapq.heappop(que)  # 거리, 노드
-        # visited 대신 사용
-        if distance[now] < dist: # 지금 노드의 거리가 이전 노드의 거리보다 작으면(현재노드의 값이 새로운 거리보다 작으면 무시)
-            continue
+        # print(que)
+        now = que.popleft() # 거리, 노드
         for next, d in adj[now]:
             if distance[next] > distance[now] + d:
                 distance[next] = distance[now] + d
-                heapq.heappush(que, (distance[now] + d, next))
+                if visited[next] ==  False:
+                    que.append(next)
+                    visited[next] = True
 
 
 # 인접리스트 생성
