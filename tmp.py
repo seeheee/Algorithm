@@ -57,28 +57,102 @@
 #         list1[i].find()
 
 
-import sys, itertools, collections
-def bfs(same):
-    start = same[0]
-    q = collections.deque([start])
-    visited = set([start])
-    _sum = 0
-    while q:
-        v = q.popleft()
-        _sum += pp[v]
-        for u in g[v]:
-            if u not in visited and u in same:
-                q.append(u)
-                visited.add(u)
-                return _sum, len(visited)
-n = int(sys.stdin.readline().strip())
-pp = [int(x) for x in sys.stdin.readline().split()]
-g = collections.defaultdict(list)
-result = float('inf')
-for i in range(n):
-    _input = [int(x) for x in sys.stdin.readline().split()]
-    for j in range(1, _input[0]+1):
-        g[i].append(_input[j]-1)
+# 1, 3], 1: [0, 2, 5, 4], 2: [3, 1], 3: [0, 2], 4: [1], 5: [1]})import sys, itertools, collections
+# # def bfs(same):
+# #     start = same[0]
+# #     q = collections.deque([start])
+# #     visited = set([start])
+# #     _sum = 0
+# #     while q:
+# #         v = q.popleft()
+# #         _sum += pp[v]
+# #         for u in g[v]:
+# #             if u not in visited and u in same:
+# #                 q.append(u)
+# #                 visited.add(u)
+# #                 return _sum, len(visited)
+# # n = int(sys.stdin.readline().strip())
+# # pp = [int(x) for x in sys.stdin.readline().split()]
+# # g = collections.defaultdict(list)
+# # result = float('inf')
+# # for i in range(n):
+# #     _input = [int(x) for x in sys.stdin.readline().split()]
+# #     for j in range(1, _input[0]+1):
+# #         g[i].append(_input[j]-1)
+# #
+# # # [[], [2, 2], [2, 4, 4, 2, 1, 3], [], [1, 3, 6, 5], [], []]
+# # print(g) # defaultdict(<class 'list'>, {0: [
 
-# [[], [2, 2], [2, 4, 4, 2, 1, 3], [], [1, 3, 6, 5], [], []]
-print(g) # defaultdict(<class 'list'>, {0: [1, 3], 1: [0, 2, 5, 4], 2: [3, 1], 3: [0, 2], 4: [1], 5: [1]})
+
+from collections import deque
+
+
+def solution(m, n, infests, vaccinateds):
+    office = [[0] * (n + 1) for _ in range(m + 1)]
+    visited = [[0] * (n + 1) for _ in range(m + 1)]
+    ha = [[0] * (n + 1) for _ in range(m + 1)]
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+
+    for i,j in infests:
+        ha[i][j] = 1
+    for i,j in vaccinateds:
+        ha[i][j] = 1
+
+    count = 0
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if ha[i][j] == 1:
+
+                count += 1
+
+
+    if count == m * n:
+        return 0
+
+    def bfs():
+        while que:
+            x, y = que.popleft()
+            # print(x,y)
+            for i in range(4):
+                nx = x + dx[i]
+                ny = y + dy[i]
+                # print(nx,ny)
+                if 1 <= nx <= m and 1 <= ny <= n:
+                    if visited[nx][ny] == 0 and office[nx][ny] == 0:
+                        office[nx][ny] = office[x][y] + 1
+                        visited[nx][ny] = 1
+                        que.append([nx, ny])
+
+
+    for a, b in vaccinateds:
+        office[a][b] = 1
+
+
+
+    que = deque()
+    for i, j in infests:
+        que.append([i, j])
+        visited[i][j] = 1
+
+    bfs()
+
+    print(office)
+    print(visited)
+
+
+
+    print(count)
+    else:
+        result = max(map(max, office))
+        if result == 1:
+            return -1
+        else:
+            return result
+
+
+
+
+
+
+print(solution(2,	2,	[[1, 1], [2, 2]],	[[1, 2], [2, 1]]))
