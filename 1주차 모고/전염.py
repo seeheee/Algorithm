@@ -4,7 +4,7 @@ from collections import deque
 def solution(m, n, infests, vaccinateds):
     office = [[0] * (n + 1) for _ in range(m + 1)]
     visited = [[0] * (n + 1) for _ in range(m + 1)]
-    # ha = [[0] * (n + 1) for _ in range(m + 1)]
+
     dx = [-1, 1, 0, 0]
     dy = [0, 0, -1, 1]
 

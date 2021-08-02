@@ -143,12 +143,12 @@ def solution(m, n, infests, vaccinateds):
 
 
     print(count)
-    else:
-        result = max(map(max, office))
-        if result == 1:
-            return -1
-        else:
-            return result
+    # else:
+    #     result = max(map(max, office))
+    #     if result == 1:
+    #         return -1
+    #     else:
+    #         return result
 
 
 
