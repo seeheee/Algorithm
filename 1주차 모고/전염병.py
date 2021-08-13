@@ -1,5 +1,8 @@
-from collections import deque
+# 생각못한 테스트케이스
+# 2, 3, [[1, 1], [1, 2]], [[2, 1], [2, 2], [2, 3]]
 
+
+from collections import deque
 
 def solution(m, n, infests, vaccinateds):
     office = [[0] * (n + 1) for _ in range(m + 1)]
@@ -11,6 +14,9 @@ def solution(m, n, infests, vaccinateds):
     l = m * n - len(infests) - len(vaccinateds)
     if l == 0:
         return 0
+
+    # for a, b in infests:
+    #     visited[a][b] = 1
 
     def bfs():
         while que:
@@ -25,24 +31,28 @@ def solution(m, n, infests, vaccinateds):
                         visited[nx][ny] = 1
                         que.append([nx, ny])
 
-    for a, b in vaccinateds:
-        office[a][b] = 1
-
     que = deque()
     for i, j in infests:
         que.append([i, j])
+        visited[i][j] = 1
+
+    for a, b in vaccinateds:
+        office[a][b] = 1
 
     bfs()
 
-    answer = 0
+    # answer = 0
+    # result = max(max(office))
+    #
+    # for v in visited:
+    #     answer += v.count(1)
+    # print(visited)
     result = max(map(max, office))
+    # answer = sum(visited, []).count(0)
 
-    for v in visited:
-        answer += v.count(1)
-
-    if answer < m * n - len(vaccinateds):
+    if sum(visited, []).count(1) < m * n - len(vaccinateds):
         return -1
     else:
         return result
 
-print(solution(2,3,[[2,2]],[[1,2],[2,1],[2,3]]))
+print(solution(2,	3,[[2,2]],[[1,2],[2,1],[2,3]]))
