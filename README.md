@@ -136,6 +136,12 @@ b.count(2)
 # 3
 ```
 
+### 2차원 리스트에서 카운트하기
+
+```python
+sum(list, []).count(0)
+```
+
 ### 💡 2차원 리스트에서 최대값과 최소값 구하기
 참고: https://devbull.xyz/python-2caweon-baeyeolyi-coedaegabs-coesogabs-cajgi/
 
