@@ -2,7 +2,7 @@ def solution(numbers):
     answer = []
     for number in numbers:
         bin_number = list('0' + bin(number)[2:])
-        idx = ''.join(bin_number).rfind('0')
+        idx = ''.join(bin_number).rfind('0') # 이 방법을 생각하기 어려웠음
         bin_number[idx] = '1'
 
         if number % 2 == 1:
